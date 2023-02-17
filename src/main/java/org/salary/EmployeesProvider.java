@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class EmployeesProvider {
 
+    private static final String SCANNER_MESSAGE = """
+            Please provide employee's data as follow
+            Ben Smith 100000 or Ben Smith 10000.00""";
+
     public static Employee getEmployeeFromScanner() {
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
-        //TODO:provide implementation scanner
-        return null;
+        return EmployeeHandler.getEmployee(getUserInput());
     }
 
     public static List<Employee> getEmployeesFromFile() {
@@ -18,4 +19,12 @@ public class EmployeesProvider {
         return null;
     }
 
+    private static String getUserInput() {
+        String userInput;
+        do {
+            System.out.println(SCANNER_MESSAGE);
+            userInput = UserInputProvider.getUserInputFromScanner();
+        } while (EmployeeValidation.hasExpectedFormat(userInput));
+        return userInput;
+    }
 }
