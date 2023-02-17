@@ -1,0 +1,5 @@
+Louis Armstrong 100000.23
+Bob Dylan 346272
+Elvis Presley 13.01
+Taylor Swift 546474
+jennifer lopez 3742642.6

@@ -1,22 +1,14 @@
 package org.salary;
 
+import org.salary.employee.Employee;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Company {
-    private ArrayList<Employee> employees;
+    private final ArrayList<Employee> employees;
 
     public Company() {
-    }
-
-    public Company(Employee employee) {
-        ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(employee);
-        this.employees = employees;
-    }
-
-    public Company(ArrayList<Employee> employees) {
-        this.employees = employees;
+        this.employees = new ArrayList<>();
     }
 
     public void addEmployee(Employee employee) {
@@ -37,7 +29,6 @@ public class Company {
 
     @Override
     public String toString() {
-        //TODO: check for refactor
         StringBuilder employeesList = new StringBuilder();
         for (Employee employee : employees) {
             employeesList.append(employee.toString()).append("\n");
