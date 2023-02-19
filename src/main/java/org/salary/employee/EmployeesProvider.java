@@ -1,6 +1,7 @@
 package org.salary.employee;
 
 import org.salary.UserInputProvider;
+import org.salary.files.PropertiesHolder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +14,6 @@ public class EmployeesProvider {
     private static final String SCANNER_MESSAGE = """
             Please provide employee's data as follow
             Ben Smith 100000 or Ben Smith 10000.00""";
-    private static final String WRONG_FORMAT = "Each employee should be in separate line and keep pattern: Ben Clock 1234";
 
     public static Employee getEmployeeFromScanner() {
         return EmployeeHandler.getEmployee(getUserInput());
@@ -26,7 +26,8 @@ public class EmployeesProvider {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (!EmployeeValidation.hasExpectedFormat(line)) {
-                    throw new InvalidPropertiesFormatException(WRONG_FORMAT);
+                    throw new InvalidPropertiesFormatException(
+                            PropertiesHolder.messageProperties.getProperty("file.shouldBeInSeparateLineAndRequiredFormat"));
                 }
                 employees.add(EmployeeHandler.getEmployee(line));
             }

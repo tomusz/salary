@@ -1,5 +1,7 @@
 package org.salary.employee;
 
+import org.salary.files.PropertiesHolder;
+
 import java.security.InvalidParameterException;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -17,7 +19,8 @@ public class EmployeeHandler {
     private static double extractSalary(Iterator<String> employeeIterator) {
         double salary = Double.parseDouble(employeeIterator.next());
         if (!EmployeeValidation.hasSalaryGraterThenZero(salary)) {
-            throw new InvalidParameterException("Salary has to be more then zero");
+            throw new InvalidParameterException(
+                    PropertiesHolder.messageProperties.getProperty("salary.hasToBeMoreThenZero"));
         }
         return salary;
     }
